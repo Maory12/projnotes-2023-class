@@ -6,7 +6,7 @@ var router = express.Router();
 //creating the router       
 router.get('/author', (req, res)=>{
     res.json({ 
-        "name": "Ana",
+        "name": "maory",
         "lastname": "Beristain",
         "twitter": "@anaberi",
         "job": "ITGAM"
