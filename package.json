@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3030 APP_URL='http://localhost' DEBUG=projnotes node ./server/bin/www",
-    "dev" : "PORT=3030 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./server/views ./server/bin/www"
+    "start": " PORT=3030 APP_URL='http://localhost' DEBUG=projnotes node ./dist/bin/www",
+    "dev" : "PORT=3030 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./server/views ./server/bin/www",
+    "build": "npm run clean && babel ./server --out-dir dist --copy-files",
+    "clean": "rm -rf ./dist" 
+
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
