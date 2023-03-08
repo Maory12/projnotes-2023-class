@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "start": " PORT=3030 APP_URL='http://localhost' DEBUG=projnotes node ./dist/bin/www",
-    "dev" : "PORT=3030 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./server/views ./server/bin/www",
+    "dev": "PORT=3030 APP_URL='http://localhost' DEBUG=projnotes babel-watch --watch ./server/views ./server/bin/www",
     "build": "npm run clean && babel ./server --out-dir dist --copy-files",
-    "clean": "rm -rf ./dist" 
-
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,6 +20,7 @@
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
+    "babel-plugin-module-resolver": "^5.0.0",
     "babel-watch": "^7.7.2"
   }
 }

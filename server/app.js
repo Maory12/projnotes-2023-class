@@ -1,21 +1,22 @@
 //help to handle http errors 
-var createError = require('http-errors');
+import createError  from 'http-errors'
 // import the express library
-var express = require('express');
+import express  from'express';
 // is a core-mode library to mandge system path
-var path = require('path');
+import path  from 'path';
 //helps to parse client cookies
-var cookieParser = require('cookie-parser');
+import cookieParser from 'cookie-parser';
 //library to loog http comuntcation
-var logger = require('morgan');
+import logger from 'morgan'
 
 //importing sobroutes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
+import indexRouter from '@server/routes/index'
+//import add from "./routes/index";
+import usersRouter from'@server/routes/users';
+import apiRouter from'@server/routes/api';
 
 //we are creating the express instance
-var app = express();
+const app = express();
 
 // view engine setup
 // we are delcaring the localization of the views
@@ -36,12 +37,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //registering routes
-app.use('/', indexRouter);
+app.use ('/', indexRouter);
 app.use('/users', usersRouter);
 app.use(apiRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((err, req, res, next)=> {
   next(createError(404));
 });
 
