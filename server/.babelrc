@@ -1,6 +1,14 @@
 {
     "presets": [
         [
+            "minfy",{
+                "builtIns" : false,
+                "evalue" : false, 
+                "mangle" : false
+
+            }
+        ],
+        [
             "@babel/preset-env",{
                 //los targes son las plataformas 
                 //donde se ejecutara el codigo final

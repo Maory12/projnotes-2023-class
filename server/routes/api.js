@@ -1,18 +1,20 @@
 // Importing Express Library 
-var express = require('express');
+import express from'express';
+const{Router} = express;
 // creating a router instance
-var router = express.Router();
+const router = express.Router();
+
  
 //creating the router       
 router.get('/author', (req, res)=>{
-    res.json({ 
-        "name": "maory",
-        "lastname": "Beristain",
-        "twitter": "@anaberi",
-        "job": "ITGAM"
+  res.json({ 
+    "name": "maory",
+    "lastname": "Beristain",
+     "twitter": "@anaberi",
+      "job": "ITGAM"
        
     });
 });
-//function(req, res){}) se requiere una funcion para que el get se le de instrucciones 
-//exporting the router
-module.exports = router;
+
+
+export default router;
