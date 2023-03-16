@@ -13,11 +13,4 @@ for the databases the project will use mongodb technology, for templace engine w
 
 ## Project Notes 
 1. Project Creation 
-2.Respository Creation
-3.Creating dedicated Backend directory
-4.Adding Babel
-5.Updating to ES6
-6.Build Script
-7.Babel plugins
-8.Adding a bundler
 
