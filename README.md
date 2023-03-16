@@ -12,7 +12,7 @@ this project will be coded in ES6, as runtime enviroment the projeect will use n
 for the databases the project will use mongodb technology, for templace engine we will use handlebars. 
 
 ## Project Notes 
-1. Project Creation 
+1. [Project Creation](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/1-Projetc-Creation.md)
 2. Repository Creation 
 3. Creating dedocated Backend Directory 
 4. Adding Babel 
