@@ -21,5 +21,5 @@ for the databases the project will use mongodb technology, for templace engine w
 6. Build Script 
 7. Babel Plugins 
 8. Adding a bundler
->>>>>>> 91ef21e7ae9489fcdcc3dabc681fb0dae838f608
+
 

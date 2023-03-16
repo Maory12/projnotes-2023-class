@@ -1,4 +1,4 @@
-# Repository Creatin
+# Updating to ES6
 in this part of the project we creatred the respository on github and the opened a github codespaces to modifcy and add new files to the projectd, the steps of the ofere mentioned thhe described bello. 
 
 ## Methods
