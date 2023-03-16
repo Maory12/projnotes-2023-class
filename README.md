@@ -14,7 +14,7 @@ for the databases the project will use mongodb technology, for templace engine w
 ## Project Notes 
 
 1. [Project Creation](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/1-Projetc-Creation.md)
-2. Repository Creation
+2. [Repository Creation](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/Respository%20Creation.md)
 3. Creating dedocated Backend Directory 
 4. Adding Babel 
 5. [Updating to ES6](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/Updating%20to%20ES6.md) 
