@@ -15,8 +15,49 @@ import indexRouter from '@server/routes/index'
 import usersRouter from'@server/routes/users';
 import apiRouter from'@server/routes/api';
 
+//setting webpack modules 
+import webpack from 'webpack'; 
+import WebpackDevMiddleware from 'webpack-dev-middleware';
+import WebpackHotMiddleware from 'webpack-hot-middleware';
+//importing webpack configuration 
+import  WebpackConfiguration  from '../webpack.dev.config';
+import webpackDevConfig from '../webpack.dev.config';
+
 //we are creating the express instance
 const app = express();
+
+//het the excution node 
+const nodeEnviroment = process.env.NODE_ENV || 'production'
+
+//deciding if we add webpack middleware or not 
+if(nodeEnviroment === 'development'){
+  //start webpack dev server 
+  console.log(" 🦾Ejecutando en modo desarrollo");
+  //adding the key mode with its value development 
+  webpackConfig.mode = nodeEnviroment;
+
+  //seting the port 
+  webpackDevConfig.devServer.port = process.env.PORT;
+
+//setting up the HMR(hot module replacement)
+webpackConfig.entry = [
+  "webpack-hot-middleware/client?reload=true&timeout=1000", 
+  webpackConfig.entry];
+  //creating the bundler 
+  const bundle = webpack(webpackConfig); 
+  //anabling 
+  app.use( WebpackDevMiddleware(bundle, {
+    publicPath: webpackConfig.output.path
+  }) );
+  //enabling the webpack  HMR
+  app.use(WebpackHotMiddleware(bundle) );
+}else{
+  console.log("🏭 ejecutando en modo produccion");
+}
+}
+  }
+}
+
 
 // view engine setup
 // we are delcaring the localization of the views

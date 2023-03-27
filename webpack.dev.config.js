@@ -4,8 +4,9 @@
 
 // Importing an file routing manager
 const path = require('path');
-// Importing plugin
+// Importing Extract Plugin
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 // We export a configuration object
 // that will be used by webpack
