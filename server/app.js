@@ -47,17 +47,13 @@ webpackConfig.entry = [
   const bundle = webpack(webpackConfig); 
   //anabling 
   app.use( WebpackDevMiddleware(bundle, {
-    publicPath: webpackConfig.output.path
+    publicPath: webpackConfig.output.publicpath
   }) );
   //enabling the webpack  HMR
   app.use(WebpackHotMiddleware(bundle) );
 }else{
   console.log("🏭 ejecutando en modo produccion");
 }
-}
-  }
-}
-
 
 // view engine setup
 // we are delcaring the localization of the views
@@ -75,7 +71,7 @@ app.use(express.urlencoded({ extended: false }));
 //parse client cookies into json 
 app.use(cookieParser());
 //set up the estatic file server 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 //registering routes
 app.use ('/', indexRouter);
@@ -98,4 +94,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default  app;
