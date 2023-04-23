@@ -18,8 +18,8 @@ for the databases the project will use mongodb technology, for templace engine w
 3. [Creating dedocated Backend Directory](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/3-Creating%20dedocated%20Backend%20Directory)
 4. [Adding Babel](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/4-Adding%20Babel.md)
 5. [Updating to ES6](https://github.com/Maory12/projnotes-2023-class/blob/main/class-notes/Updating%20to%20ES6.md) 
-6. Build Script 
-7. Babel Plugins 
-8. Adding a bundler
+6. [Build Script] 
+7. [Babel Plugins] 
+8. [Adding a bundler]
 
 
