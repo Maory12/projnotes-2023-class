@@ -6,9 +6,10 @@ import path from 'path';
 // helps to parse client cookies
 import cookieParser from 'cookie-parser';
 // library to loog http comuntcation
-import logger from 'morgan';
+import morgan from 'morgan';
 
 // importing sobroutes
+
 import indexRouter from '@server/routes/index';
 // import add from "./routes/index";
 import usersRouter from '@server/routes/users';
@@ -20,6 +21,12 @@ import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 // importing webpack configuration
 import webpackDevConfig from '../webpack.dev.config';
+
+// impornting winston logger
+import winston from './config/winston';
+// Creando variable del directorio raiz
+// eslint-disable-next-line
+global["__rootdir"] = path.resolve(process.cwd());
 
 // we are creating the express instance
 const app = express();
@@ -63,7 +70,8 @@ app.set('view engine', 'hbs');
 
 // Registering middleware
 // log all receivedrequests
-app.use(logger('dev'));
+// eslint-disable-next-line no-undef
+app.use(morgan('combined', { stream: winston.stream }));
 // parse request data into json
 app.use(express.json());
 // decode url info
