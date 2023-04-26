@@ -1,6 +1,4 @@
-//help to handle http errors 
-
-import createError  from 'http-errors'
+import createError  from 'http-errors';
 // import the express library
 import express  from'express';
 // is a core-mode library to mandge system path
