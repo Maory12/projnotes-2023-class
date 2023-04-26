@@ -1,22 +1,23 @@
 /**
  * Module dependencies.
  */
-//se importa el app la logica del servcer 
-//require permite importar codigo de otro archivo
+// se importa el app la logica del servcer
+// require permite importar codigo de otro archivo
 
-import app  from '../app'; 
-//se esta imortando una dependencia externa 
+// se esta imortando una dependencia externa
 import debug from 'debug';
 
-const debug = debug('projnotes')
-//modulo que permite la comunicacion con un cliente 
-//via protocola HTTP 
-import http from'http';
+// const debug = debug('projnotes')
+// modulo que permite la comunicacion con un cliente
+// via protocola HTTP
+import http from 'http';
+import app from '../app';
 
 /**
  * Get port from environment and store in Express.
  */
 
+// eslint-disable-next-line no-use-before-define
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
@@ -31,7 +32,9 @@ const server = http.createServer(app);
  */
 
 server.listen(port);
+// eslint-disable-next-line no-use-before-define
 server.on('error', onError);
+// eslint-disable-next-line no-use-before-define
 server.on('listening', onListening);
 
 /**
@@ -39,8 +42,10 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
+  // eslint-disable-next-line no-shadow
   const port = parseInt(val, 10);
 
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(port)) {
     // named pipe
     return val;
@@ -63,9 +68,7 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -74,6 +77,7 @@ function onError(error) {
       process.exit(1);
       break;
     case 'EADDRINUSE':
+      // eslint-disable-next-line no-template-curly-in-string
       console.error('${bind} is already in use');
       process.exit(1);
       break;
@@ -87,11 +91,6 @@ function onError(error) {
  */
 
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
-  ? 'pipe ${addr}'
-  : 'port ${addr.port}';
+  // eslint-disable-next-line no-template-curly-in-string
   debug('⭐⭐ Listening on ${process.env.APP_URL}:${addr.port} ⭐⭐');
 }
- 
-    
