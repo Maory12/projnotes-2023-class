@@ -18,7 +18,7 @@ import app from '../app';
  */
 
 // eslint-disable-next-line no-use-before-define
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3030');
 app.set('port', port);
 
 /**

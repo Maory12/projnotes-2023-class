@@ -1,4 +1,7 @@
-const { Router } = 'express';
+import express from 'express';
+
+const { Router } = express;
+
 const router = Router();
 
 /* GET users listing. */
