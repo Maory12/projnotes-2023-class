@@ -19,6 +19,9 @@ import apiRouter from '@server/routes/api';
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
+
+// importando el configurador del motor de plantillas
+import configTemplateEngine from './config/templateEngine';
 // importing webpack configuration
 import webpackDevConfig from '../webpack.dev.config';
 
@@ -64,9 +67,7 @@ if (nodeEnviroment === 'development') {
 }
 
 // view engine setup
-// we are delcaring the localization of the views
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+configTemplateEngine(app);
 
 // Registering middleware
 // log all receivedrequests
