@@ -10,10 +10,10 @@ import morgan from 'morgan';
 
 // importing sobroutes
 
-import indexRouter from '@server/routes/index';
-// import add from "./routes/index";
-import usersRouter from '@server/routes/users';
-import apiRouter from '@server/routes/api';
+// eslint-disable-next-line import/no-duplicates
+// import indexRouter from '@server/routes/index';
+// import usersRouter from '@server/routes/users';
+// import apiRouter from '@server/routes/api';
 
 // setting webpack modules
 import webpack from 'webpack';
@@ -27,6 +27,10 @@ import webpackDevConfig from '../webpack.dev.config';
 
 // impornting winston logger
 import log from './config/winston';
+
+// importado enrutador
+import router from './router';
+
 // Creando variable del directorio raiz
 // eslint-disable-next-line
 global["__rootdir"] = path.resolve(process.cwd());
@@ -83,9 +87,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // registering routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use(apiRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+// app.use(apiRouter);
+router.addRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
