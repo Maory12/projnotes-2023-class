@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/styles/app.css' />
+    <title>DWPII-2023A</title>
+     <link rel='stylesheet' href='/styles/app.css' />
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <script src="/bundle.js" defer></script>
   </head>
   <body>
-    {{{body}}}
+    {{!-- Llamando a la vista parcial de la barra de navegacion --}}
+  {{> _navbar }}
+       <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">LOGO</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Oper 1</a></li>
+            <li><a href="#">Oper 2</a></li>
+            <li><a href="#">Oper 3</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   <div class="container">
+    <h1> ⭐ DWPCII - 2023A</h1>
+    <p> Wlcome to my awesome project pag</p>
+    </div>
   </body>
 </html>
