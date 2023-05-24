@@ -7,12 +7,13 @@ const home = (req, res) => {
   res.render('home/homeView', { icon });
 };
 
-// index
-// const about = (req, res) => {
-//   res.send('⚠ UNDER CONTRUCTION: GET /about ⚠ ');
+// get /index
+const about = (req, res) => {
+  res.render('home/aboutView');
+};
 
 // Controlador Home
 export default {
   home,
-  // about,
+  about,
 };

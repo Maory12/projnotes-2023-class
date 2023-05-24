@@ -9,9 +9,9 @@ const router = new Router();
 
 // Enrutamos
 // get 'proyectos/projects'
-router.get(['/projects'], projectsController.projects);
+router.get(['/'], projectsController.projects);
 // get 'proyectos/add'
-router.get(['/projects/add'], projectsController.add);
+router.get(['/add'], projectsController.add);
 
 // Exporto este tramo de ruta
 export default router;
