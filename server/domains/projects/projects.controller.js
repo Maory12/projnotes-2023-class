@@ -5,7 +5,7 @@ const projects = (req, res) => {
 };
 // GET "/projects/add
 const add = (req, res) => {
-  res.send('⚠ UNDER CONTRUCTION: GET /projects/add ⚠ ');
+  res.render('project/addView');
 };
 
 // Controlador user
