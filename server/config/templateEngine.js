@@ -1,8 +1,4 @@
-// Importando la biblioteca
-// habdlebars
-
 import { engine as exphbs } from 'express-handlebars';
-
 import path from 'path';
 
 // crea una funcion de configuracion
@@ -19,6 +15,7 @@ export default (app) => {
       defaultLayout: 'main',
     })
   );
+  console.log(__dirname);
 
   // selecionado el motor de la platilla que intregramos
   // anteriormente
