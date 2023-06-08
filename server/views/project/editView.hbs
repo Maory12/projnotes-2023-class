@@ -2,12 +2,12 @@
   <div class="col s12 m10 offset-m1 l8 offset-l2">
     <div class="card">
       <div class="card-image">
-        <img src="/images/add.png" alt="">
-          <span class="card-title add-project" style="font-weight: bolder;">
-          Crear proyecto
+        <img src="/img/addproject.png" alt="">
+        <span class="card-title add-project" style="font-weight: bolder;">
+          Editar proyecto
         </span>
       </div>
-      <form autocomplete="off" action="/project/add" method="post">
+      <form autocomplete="off" action="/project/edit/{{ project._id }}?_method=put" method="post">
         <div class="card-content">
           <div class='input-field'>
             <label for='project-name'>Nombre de tu idea de proyecto</label>
@@ -49,7 +49,7 @@
         </div>
         <div class="card-action">
           <button type="submit" class="blue darken-3 waves-effect waves-light btn">
-            <i class="material-icons left">note_add</i> Agregar
+            <i class="material-icons left">edit</i> Editar
           </button>
         </div>
       </form>

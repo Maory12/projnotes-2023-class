@@ -1,5 +1,4 @@
 // Importando el paquete Dotenv
-// eslint-disable-next-line import/no-extraneous-dependencies
 import dotenv from 'dotenv';
 
 // Con esta función se cargan las variables

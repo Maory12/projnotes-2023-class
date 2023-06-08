@@ -1,99 +1,89 @@
 import createError from 'http-errors';
-// import the express library
-import express from 'express';
-// is a core-mode library to mandge system path
-import path from 'path';
-// helps to parse client cookies
-import cookieParser from 'cookie-parser';
-// library to loog http comuntcation
-import morgan from 'morgan';
-
-// importing sobroutes
-
-// eslint-disable-next-line import/no-duplicates
-// import indexRouter from '@server/routes/index';
-// import usersRouter from '@server/routes/users';
-// import apiRouter from '@server/routes/api';
-
-// setting webpack modules
-import webpack from 'webpack';
-import WebpackDevMiddleware from 'webpack-dev-middleware';
-import WebpackHotMiddleware from 'webpack-hot-middleware';
-
-// importando el configurador del motor de plantillas
-import configTemplateEngine from './config/templateEngine';
-// importing webpack configuration
-import webpackDevConfig from '../webpack.dev.config';
-
-// impornting winston logger
-import log from './config/winston';
-
-// importado enrutador
-import router from './router';
 
 // Creando variable del directorio raiz
 // eslint-disable-next-line
-global["__rootdir"] = path.resolve(process.cwd());
+// import the express library
+import express from 'express';
 
-// we are creating the express instance
+import path from 'path';
+
+import cookieParser from 'cookie-parser';
+// Library to log http communication
+import morgan from 'morgan';
+
+// importando el onfigurador de mootor de plantillas
+
+// Setting Webpack Modules
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import webpack from 'webpack';
+import WebpackDevmiddlegare from 'webpack-dev-middleware';
+import WebpackHotMiddleware from 'webpack-hot-middleware';
+
+import configTemplateEngine from './config/templateEngine';
+
+// Importing webpack Configuration
+
+import webpackConfig from '../webpack.dev.config';
+
+// Impornting winston logger
+import log from './config/winston';
+
+// Importando enrutador
+import router from './router';
+
+// We are creating the express instance
 const app = express();
 
-// het the excution node
+// Get the execution mode
+
 const nodeEnviroment = process.env.NODE_ENV || 'production';
 
-// deciding if we add webpack middleware or not
+// Deciding if we add  webpack middleware or not
+
 if (nodeEnviroment === 'development') {
   // start webpack dev server
-  console.log(' 🦾Ejecutando en modo desarrollo');
-  // adding the key mode with its value development
-  webpackDevConfig.mode = nodeEnviroment;
+  console.log('🎧 Ejecutando el modo desarrollo');
+  // Adding the key
+  webpackConfig.mode = nodeEnviroment;
 
-  // seting the port
-  webpackDevConfig.devServer.port = process.env.PORT;
+  webpackConfig.devServer.port = process.env.PORT;
 
-  // setting up the HMR(hot module replacement)
-  webpackDevConfig.entry = [
+  webpackConfig.entry = [
     'webpack-hot-middleware/client?reload=true&timeout=1000',
-    webpackDevConfig.entry,
+    webpackConfig.entry,
   ];
 
-  // agregar el plugin a la configuracion de desarrollo
-  // de webpack
-  webpackDevConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-  // creating the bundler
-  const bundle = webpack(webpackDevConfig);
-  // anabling
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+  const bundle = webpack(webpackConfig);
+
   app.use(
-    WebpackDevMiddleware(bundle, {
-      publicPath: webpackDevConfig.output.publicPath,
+    WebpackDevmiddlegare(bundle, {
+      publicPath: webpackConfig.output.PublicPath,
     })
   );
-  // enabling the webpack  HMR
+
   app.use(WebpackHotMiddleware(bundle));
 } else {
-  console.log('🏭 ejecutando en modo produccion');
+  console.log('👘 Ejecutando modo produccion');
 }
 
-// view engine setup
+// View Engine Setup
 configTemplateEngine(app);
 
-// Registering middleware
-// log all receivedrequests
-// eslint-disable-next-line no-undef
+// Registering midlewares
+// Log all received requests
 app.use(morgan('combined', { stream: log.stream }));
-// parse request data into json
+// Parse request data into jason
 app.use(express.json());
-// decode url info
+// Decode url info
 app.use(express.urlencoded({ extended: false }));
-// parse client cookies into json
+// Parse client Cookies into json
 app.use(cookieParser());
-// set up the estatic file server
+// Set up the static file server
 app.use(express.static(path.join(__dirname, '../public')));
 
-// registering routes
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-// app.use(apiRouter);
 router.addRoutes(app);
 
 // catch 404 and forward to error handler

@@ -1,27 +1,25 @@
 import { engine as exphbs } from 'express-handlebars';
 import path from 'path';
 
-// crea una funcion de configuracion
-// que exportaremos por defecto
+// Funcion de configuración
 export default (app) => {
-  // Refistrando un nuevo motor de plantillas
-  // compatible con consolidatejs
+  // Se registra el motor de plantillas
   app.engine(
     'hbs',
     exphbs({
-      // definir la extension de la platilla
+      // Se define extensión de la plantilla
       extname: '.hbs',
-      // estableciendo el layout por defecto
+      // Se fefine el nombre del layput por defecto
       defaultLayout: 'main',
     })
   );
   console.log(__dirname);
 
-  // selecionado el motor de la platilla que intregramos
-  // anteriormente
+  // Se selecciona le motor de plantilla
   app.set('view engine', 'hbs');
+  // Se establece la ruta de las vistas
   app.set('views', path.join(__dirname, '..', 'views'));
 
-  // se retorna la instanacia recibida como argumento
+  // Se retorna la instancia de la app
   return app;
 };

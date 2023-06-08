@@ -15,11 +15,7 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"mongodb.mongodb-vscode",
-				"wayou.vscode-todo-highlight",
-				"usernamehw.errorlens",
-				"rangav.vscode-thunder-client",
-				"meganrogge.template-string-converter"
+				"mongodb.mongodb-vscode"
 			]
 		}
 	}
