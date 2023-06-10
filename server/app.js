@@ -1,30 +1,28 @@
+// Helps to handle http errors
 import createError from 'http-errors';
-
-// Creando variable del directorio raiz
-// eslint-disable-next-line
-// import the express library
+// Import the Express Library
 import express from 'express';
-
+// Enable post and delete verbs
+// eslint-disable-next-line import/no-extraneous-dependencies
+import methodOverride from 'method-override';
+// Is a Core-Node library to manage system paths
 import path from 'path';
-
+// Helps to parse client cookies
 import cookieParser from 'cookie-parser';
 // Library to log http communication
 import morgan from 'morgan';
 
-// importando el onfigurador de mootor de plantillas
+// Importing template-engine
+import configTemplateEngine from '@server/config/templateEngine';
 
 // Setting Webpack Modules
-
-// eslint-disable-next-line import/no-extraneous-dependencies
 import webpack from 'webpack';
-import WebpackDevmiddlegare from 'webpack-dev-middleware';
+import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
-
-import configTemplateEngine from './config/templateEngine';
-
-// Importing webpack Configuration
-
+// Importing webpack configuration
 import webpackConfig from '../webpack.dev.config';
+// Importando configurador de sesiones
+import configSession from './config/configSessions';
 
 // Impornting winston logger
 import log from './config/winston';
@@ -32,58 +30,65 @@ import log from './config/winston';
 // Importando enrutador
 import router from './router';
 
+// Creando variable del directorio raiz
+// eslint-disable-next-line
+global['__rootdir'] = path.resolve(process.cwd());
+
 // We are creating the express instance
 const app = express();
-
 // Get the execution mode
-
 const nodeEnviroment = process.env.NODE_ENV || 'production';
 
-// Deciding if we add  webpack middleware or not
-
+// Deciding if we add webpack middleware or not
 if (nodeEnviroment === 'development') {
-  // start webpack dev server
-  console.log('🎧 Ejecutando el modo desarrollo');
-  // Adding the key
+  // Start Webpack dev server
+  console.log('🛠️  Ejecutando en modo desarrollo');
+  // Adding the key "mode" with its value "development"
   webpackConfig.mode = nodeEnviroment;
-
+  // Setting the port
   webpackConfig.devServer.port = process.env.PORT;
-
+  // Setting up the HMR (Hot Module Replacement)
   webpackConfig.entry = [
     'webpack-hot-middleware/client?reload=true&timeout=1000',
     webpackConfig.entry,
   ];
-
+  // Agregar el plugin a la configuración de desarrollo
+  // de webpack
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-
+  // Creating the bundler
   const bundle = webpack(webpackConfig);
-
+  // Enabling the webpack middleware
   app.use(
-    WebpackDevmiddlegare(bundle, {
-      publicPath: webpackConfig.output.PublicPath,
+    WebpackDevMiddleware(bundle, {
+      publicPath: webpackConfig.output.publicPath,
     })
   );
-
+  //  Enabling the webpack HMR
   app.use(WebpackHotMiddleware(bundle));
 } else {
-  console.log('👘 Ejecutando modo produccion');
+  console.log('🏭 Ejecutando en modo producción 🏭');
 }
 
-// View Engine Setup
+// Configuring the template engine
 configTemplateEngine(app);
 
-// Registering midlewares
+// Registering middlewares
 // Log all received requests
-app.use(morgan('combined', { stream: log.stream }));
-// Parse request data into jason
+app.use(morgan('dev', { stream: log.stream }));
+// Parse request data into json
 app.use(express.json());
 // Decode url info
 app.use(express.urlencoded({ extended: false }));
-// Parse client Cookies into json
+// Parse client cookies into json
 app.use(cookieParser());
+// Enable post and delete verbs
+app.use(methodOverride('_method'));
+// Habilitando manejo de sesiones y mensajes flash
+configSession(app);
 // Set up the static file server
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Registering routes
 router.addRoutes(app);
 
 // catch 404 and forward to error handler

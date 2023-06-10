@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 
-// Module dependencies.
-// Importing the server logic
-// require is used to import code from an external file
-// Importing an external dependecy
-// Module that allows to communicate with a client
 // usign HTTP protocol
 import http from 'http';
 
